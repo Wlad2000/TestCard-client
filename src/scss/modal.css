@@ -33,9 +33,109 @@
 li{
     list-style: none;
 }
-.modal__body{
-    padding: 5px;
+
+.modal__container{
+    margin: 20px 0 ;
+    display: flex;
+    flex-direction: column;
 }
+.modal__container-header{
+    display: grid;
+    grid-template-columns: 1fr 4fr repeat(4,1fr);
+}
+
+.modal__container-name{
+    grid-column-start: 1;
+    justify-self: center;
+    color: blue;
+}
+    
+.modal__container-level{
+    grid-column-start: 3;
+    justify-self: center;
+    color: blue;
+}
+.modal__container-data{
+    grid-column-start: 5;
+    justify-self: center;
+    color: blue;
+}
+.item__container{
+   margin: 10px 0;
+    grid-template-columns: 1fr 4fr repeat(4,1fr);
+    border-bottom: 1px solid grey;
+    display: grid;
+}
+.item__container:hover {
+    background: rgba(211, 211, 211, .3) ;
+    border-bottom: 5px solid grey;      
+}
+.item__container:hover .item__btn{
+    display: flex;
+    grid-column-start: 2;
+    justify-content: center;
+    align-items: center;
+}
+.item__container:hover .item__name{
+ color: red;
+ font-style: italic;
+ font-weight: bolder;
+}
+
+.item__icon{
+    align-items: center;
+    width: 60%;
+}
+.item__name{
+    grid-column-start: 2;
+    display: flex;
+    flex-direction: column;
+}
+.item__level{
+    grid-column-start: 3;
+    display: flex;
+    flex-direction: column;
+}
+.item__data{
+    grid-column-start: 5;
+    display: flex;
+    flex-direction: column;
+}
+.item__btn{
+   display: none;
+}
+
+
+.item__button{
+    grid-column-start: 2;
+    margin-left: 50px;
+    cursor: pointer;
+  background-color: lightblue;
+  border: none;
+  width: 40%;
+  height: 20px;
+  border-radius: 20px;
+  margin-bottom: 2%;
+}
+.item__button:hover {
+    background-color:  #991;;
+    color: white;
+  }
+.item__btn-del{
+    grid-column-start: 6;
+    cursor: pointer;
+    background-color: lightcoral;
+    border: none;
+    width: 90%;
+     height: 30px;
+     border-radius: 20px;
+     margin-bottom: 2%;
+}
+.item__btn-del:hover {
+    background-color:  lightsalmon;;
+    color: white;
+  }
+
 .modal__list{
     display: flex;
     flex-direction: column;            
@@ -46,13 +146,23 @@ li{
 }
 
 .modal__button{
-    text-align: center;
-    width: 50px;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    background-color: #991;
-    color: white;
-    text-decoration: none;
-    margin: 0.5rem 0.5rem;
     cursor: pointer;
+    background-color: lightseagreen;
+    border: none;
+    width: 30%;
+     height: 30px;
+     border-radius: 20px;
+     margin-bottom: 2%;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+.modal__button:hover {
+    background-color:  lightgreen;;
+    color: white;
+  }
+
+.modal__input{
+    width: 40%;
+    border: none;
+    border-bottom: 2px solid grey;
 }

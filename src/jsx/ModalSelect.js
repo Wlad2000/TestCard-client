@@ -15,15 +15,24 @@ const ModalSelect = ({data, active, setActive}) => {
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
         <div className='modal__content' onClick={(e) => e.stopPropagation()}>
             <div className='modal__header'>SELECT  { currentUser.name }</div>
-            <div className='modal__body'>
-              <ul className='modal__list'>
-              {data.map((item) => (
-                <li className='modal__list-li' key={item.id}>
-                  {item.name} - {item.accesslevel} - {item.datecreate} - {item.icon}
-                  { item.id !== currentUser.id && <button className='modal__button' onClick={() => handleCurrent(item)}>O</button>}
-              </li>
-              ))}
-              </ul>
+            <div className='modal__container'>
+              <div className='modal__container-header'>
+                <div className='modal__container-name'> ItemName </div>
+                <div className='modal__container-level'> AccessLevel</div>
+                <div className='modal__container-data'> Data</div>
+              </div>
+                {data.map((item) => 
+                    (
+                      <div className='item__container'>
+                        <img className='item__icon' src={item.icon}/>
+                        <div className='item__name'>{item.name}</div>
+                        <div className='item__level'>{item.accesslevel}</div>
+                        <div className='item__data'>{item.datecreate.slice(2,10)}</div>
+                   
+                        { item.id !== currentUser.id && <button className='item__button' onClick={() => handleCurrent(item)}>SELECT</button>}
+                 
+                      </div>
+                    ))}
             </div>
         </div>
     </div>
@@ -31,3 +40,4 @@ const ModalSelect = ({data, active, setActive}) => {
 }
 
 export default ModalSelect
+

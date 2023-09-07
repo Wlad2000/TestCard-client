@@ -39,3 +39,8 @@
     margin: 0.5rem 0.5rem;
     cursor: pointer;
   }
+  .card-btn:hover{
+    background-color: gray;
+    color: lightgray;
+  }
+  

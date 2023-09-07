@@ -29,7 +29,7 @@ function Card({ data }) {
   return (
     <div className="card">
       <div className="card-header">CARD NAME</div>
-      <div className="card-content"> {currentUser.name || `select user` }</div>
+      <div className="card-content"> { currentUser.name || `select user` }</div>
       <div className="card-footer">
         <button className='card-btn' onClick={handleSelect}>Select</button>
         <button className='card-btn' onClick={handleInfo}>Info</button>

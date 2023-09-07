@@ -8,11 +8,21 @@ const ModalInfo = ({active, setActive}) => {
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
         <div className='modal__content' onClick={(e) => e.stopPropagation()}>
             <div className='modal__header'>INFO</div>
-            <div className='modal__list'>
-            <li className='modal__list-li'>
-             { currentUser.name ? `${currentUser.name} - ${currentUser.accesslevel} - ${currentUser.datecreate} - ${currentUser.icon}` : `Select user!`}
-          </li>
+            { currentUser.name ? 
+            <div className='modal__container'>
+              <div className='modal__container-header'>
+                <div className='modal__container-name'> ItemName </div>
+                <div className='modal__container-level'> AccessLevel</div>
+                <div className='modal__container-data'> Data</div>
+              </div>
+             <div className='item__container'>
+             <img className='item__icon' src={currentUser.icon}/>
+             <div className='item__name'> {currentUser.name}</div>
+             <div className='item__level'> {currentUser.accesslevel}</div>
+             <div className='item__data'> {currentUser.datecreate.slice(2,10)}</div>
+           </div>
             </div>
+            : `Select user!`}
         </div>
     </div>
   )
