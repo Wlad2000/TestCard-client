@@ -1,36 +1,29 @@
-import React, { useState } from 'react'
-import { io } from 'socket.io-client';
+import React from 'react'
 import "../scss/modal.css";
-import { socket } from './App';
+import { useUserState } from './context';
 
 
 
 const ModalSelect = ({data, active, setActive}) => {
-const [first, setfirst] = useState({})
+  const { currentUser, setCurrentUser } = useUserState();
+
   const handleCurrent = (user) =>{
-    console.log(user)
-    socket.on('setCurrentUser', (user) => {
-      console.log(user)
-      socket.emit('setCurrentUser', user);
-    });
-    setfirst(user)
-    console.log(first)
+    setCurrentUser(user);
   }
 
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
         <div className='modal__content' onClick={(e) => e.stopPropagation()}>
-            <div className='modal__header'>SELECT</div>
-            <div className='modal__list'>
-              {first.name}
-            <ul>
-        {data.map((item) => (
-          <li key={item.id}>
-            {item.name} - {item.accesslevel} - {item.datecreate} - {item.icon}
-            <button onClick={() => handleCurrent(item)}>SEL</button>
-          </li>
-        ))}
-      </ul>
+            <div className='modal__header'>SELECT  { currentUser.name }</div>
+            <div className='modal__body'>
+              <ul className='modal__list'>
+              {data.map((item) => (
+                <li className='modal__list-li' key={item.id}>
+                  {item.name} - {item.accesslevel} - {item.datecreate} - {item.icon}
+                  { item.id !== currentUser.id && <button className='modal__button' onClick={() => handleCurrent(item)}>O</button>}
+              </li>
+              ))}
+              </ul>
             </div>
         </div>
     </div>

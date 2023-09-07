@@ -1,5 +1,5 @@
 .modal{
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     background-color: rgba(0,0,0,0.4);
     position: fixed;
@@ -11,6 +11,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.5s;
+    overflow: auto;
 }
 .modal.active{
     opacity: 1;
@@ -21,9 +22,37 @@
     border-radius: 12px;
     background-color: white;
     width: 50vw;
+    overflow: auto;
 }
 .modal__header{
     border-bottom: #999 1px solid;
     width: 100%;
     align-items: center;
+}
+
+li{
+    list-style: none;
+}
+.modal__body{
+    padding: 5px;
+}
+.modal__list{
+    display: flex;
+    flex-direction: column;            
+}
+.modal__list-li{
+    border-bottom: #999 1px solid; 
+    margin-top: 10px;     
+}
+
+.modal__button{
+    text-align: center;
+    width: 50px;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    background-color: #991;
+    color: white;
+    text-decoration: none;
+    margin: 0.5rem 0.5rem;
+    cursor: pointer;
 }

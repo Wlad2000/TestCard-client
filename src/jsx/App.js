@@ -1,19 +1,11 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 import "../scss/App.css";
 import Card from './Card';
-//import axios from 'axios';
-export const socket = io.connect('http://localhost:3001'); // Підключаємось до сервера
+import { UserStateProvider } from './context';
 
-export function createItem (name) {
-  try{
-      const response =  axios.post(`http://localhost:3001/add?name=${name}`)
-      console.log("ok@")
-  }catch(e){
-      alert(e.response.data.message)
-  }
-}
+export const socket = io.connect('http://localhost:3001'); // SERVER
+
 
 function App() {
   const [listnames, setListnames] = useState([]);
@@ -21,10 +13,10 @@ function App() {
 
 
   useEffect(() => {
-    // Отправка GET-запроса на сервер для получения данных
+   
     socket.emit('get_listnames');
 
-    // Прослушивание ответа от сервера
+   
     socket.on('listnames_data', (data) => {
       setListnames(data);
     });
@@ -35,6 +27,7 @@ function App() {
   }, [])
 
   return (
+    <UserStateProvider>
     <div className='app'>
      
        <Card 
@@ -42,6 +35,7 @@ function App() {
        />
      
     </div>
+    </UserStateProvider>
   );
 }
 
