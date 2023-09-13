@@ -3,6 +3,7 @@ import { io } from 'socket.io-client';
 import "../scss/App.css";
 import Card from './Card';
 import { UserStateProvider } from './context';
+import { Rectangle } from './QuickBase';
 
 export const socket = io.connect('http://localhost:3001'); // SERVER
 
@@ -28,13 +29,18 @@ function App() {
 
   return (
     <UserStateProvider>
-    <div className='app'>
+    <Rectangle 
+        height = "100vh"
+        display = "flex"
+        alignItems = "center"
+        justifyContent = "center"
+    >
      
        <Card 
         data={listnames} 
        />
      
-    </div>
+    </Rectangle>
     </UserStateProvider>
   );
 }
