@@ -25,12 +25,14 @@ const Modal = (props) => {
             height = "250px"
             overflow = "auto"
             onClick = {(e) => e.stopPropagation()}
+            backdropFilter="blur(10px)"
+            background= " linear-gradient(90deg, rgba(200,137,209,1) 0%, rgba(215,187,226,1) 50%, rgba(209,114,235,1) 100%)"
        
          >  
               <Rectangle
                display = "flex"
                justifyContent = "space-between"
-               borderBottom = " #999 1px solid"
+               borderBottom = " #ac3bac 5px solid"
               >
                 <Text
                     text = {props.title} 
@@ -46,6 +48,7 @@ const Modal = (props) => {
                     borderRadius = "20px"
                     onClick={props.close} 
                     text={"X"}
+                    display= {!props.close && "none"}
                 />
               </Rectangle>
                 {props.children}

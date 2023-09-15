@@ -16,6 +16,14 @@ const ModalDelete = (props) => {
     props.close()
   };
 
+  const handleDeleteUser = () => {
+    socket.emit('delete-user', props.item.id);
+
+    // GET data
+    socket.emit('get_users');
+    props.close()
+  };
+
   return (
     props.opened &&
       <Modal title='Create item' close={props.close}>
@@ -42,7 +50,7 @@ const ModalDelete = (props) => {
                 marginBottom = "5px"
                 height = "30px" 
                 borderRadius = "20px"
-                onClick = {handleDelete}
+                onClick = {props.delUser ? handleDeleteUser : handleDelete}
                 text={"Delete"}
               />
           </Rectangle>

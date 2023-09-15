@@ -32,7 +32,7 @@ const ModalSelect = (props) => {
                         display = "flex"
                         justifyContent = "space-between"
                         padding = "10px"
-                        borderBottom = {currentItem.idrecipe === item.idrecipe ? "3px solid green" : "1px solid black" }
+                        borderBottom = {currentItem.idrecipe === item.idrecipe ? "3px solid purple" : "1px solid black" }
                         
                       >
                         <RadioButton
@@ -42,7 +42,7 @@ const ModalSelect = (props) => {
                         />
                         <Text
                           
-                          color = {currentItem.idrecipe === item.idrecipe ? "green" : " black" }
+                          color = {currentItem.idrecipe === item.idrecipe ? "purple" : " black" }
                           text = {item.name}
                         />
                       </Rectangle>

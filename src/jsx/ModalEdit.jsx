@@ -8,14 +8,14 @@ import { Button, Rectangle, Text, Input } from './QuickBase';
 const ModalEdit = (props) => {
 
   const [formData, setFormData] = useState({
-    idrecipe: 0,
+    id: 0,
     updates: {
      
     },
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name,value } = e.target;
     setFormData({
       ...formData,
       updates: { ...formData.updates, [name]: value },
@@ -23,13 +23,24 @@ const ModalEdit = (props) => {
   };
 
   const handleSubmit = (id) => {
-    formData.idrecipe = id
+    formData.id = id
     socket.emit('edit-listname', formData);
        
         // GET data
         socket.emit('get_listnames');
 
-        setFormData({ idrecipe: 0, updates: {} });
+        setFormData({ id: 0, updates: {} });
+        props.close()
+  };
+
+  const handleSubmitCreateUser = (id) => {
+    formData.id = id
+    socket.emit('edit-user', formData);
+       
+        // GET data
+        socket.emit('get_users');
+
+        setFormData({ id: 0, updates: {} });
         props.close()
   };
 
@@ -38,14 +49,60 @@ const ModalEdit = (props) => {
   return (
     props.opened &&
       <Modal title='Edit item' close={props.close}>
+        
+            {
+              props.editUser 
+              ?
+            <Rectangle
+              display="flex"
+              justifyContent = "center"
+              alignItems = "center"
+              flexDirection = "column"
+              rowGap = "20px"
+              padding = "20px"
+            >
+              <Text text={"ID: " + props.item.id}/>
+              <Input 
+              name = "name"
+              value={formData.updates.name }
+              onChange={handleChange}
+              placeholder={"name: " + props.item.name}
+            />
+             <Input 
+              name = "login"
+              value={formData.updates.login }
+              onChange={handleChange}
+              placeholder={"login: " + props.item.login}
+            />
+            <Input 
+              name = "accessLevel"
+              value={formData.updates.accessLevel }
+              onChange={handleChange}
+              placeholder={"accessLevel: " + props.item.accessLevel}
+            />
+                      <Button
+              cursor = "pointer"
+              backgroundColor = "orange"
+              color = "#fff"
+              border = "none"
+              width = "50%"
+              marginBottom = "5px"
+              height = "30px" 
+              borderRadius = "20px"
+              onClick={() => handleSubmitCreateUser(props.item.id)} 
+              text={"Edit"}
+            />  
+
+            </Rectangle>
+              :
           <Rectangle
-            display="flex"
-            justifyContent = "center"
-            alignItems = "center"
-            flexDirection = "column"
-            rowGap = "20px"
-            padding = "20px"
-          >
+              display="flex"
+              justifyContent = "center"
+              alignItems = "center"
+              flexDirection = "column"
+              rowGap = "20px"
+              padding = "20px"
+            >
             <Text text={"ID: " + props.item.idrecipe}/>
             <Input 
               name = "name"
@@ -124,9 +181,11 @@ const ModalEdit = (props) => {
               borderRadius = "20px"
               onClick={() => handleSubmit(props.item.idrecipe)} 
               text={"Edit"}
-            />            
-
+            />    
           </Rectangle>
+          }        
+
+     
       </Modal>
   )
 }

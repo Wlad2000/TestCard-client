@@ -21,7 +21,7 @@ function Rectangle(props) {
     var styles = Object.assign({}, props);
 
     return (
-        <div style={styles} onClick={props.onClick}>
+        <div style={styles} className={props.className} onClick={props.onClick}>
           {props.children}
         </div>
     );
@@ -30,7 +30,7 @@ function Rectangle(props) {
 function Button(props) {
     var styles = Object.assign({}, props);
     return (
-        <button style={styles} onClick={props.onClick}>
+        <button style={styles} className={props.className} onClick={props.onClick}>
           {props.text}
         </button>
     );
@@ -54,24 +54,26 @@ function Input(props) {
     return (
                
             <input
+            className={props.className}
                 style={styles} 
                 name ={props.name}
                 value={props.value}
                 onChange={props.onChange} 
-                type="text" 
+                type={props.type} 
                 placeholder={props.placeholder}
+                min={props.min} max={props.max}
             /> 
     );
 }
 
 function Text(props) {
     var styles = Object.assign({
-        color: "#cecece",
+        color: 'purple',
         fontSize: "16px"
     }, props);
 
     return (
-        <span style={styles}>
+        <span className={props.className} style={styles}>
           {props.text}
         </span>
     );

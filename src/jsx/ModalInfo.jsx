@@ -4,7 +4,7 @@ import Modal from './Modal';
 import { Rectangle, Text } from './QuickBase';
 
 const ModalInfo = (props) => {
-  const { currentItem, setCurrentItem } = useItemState();
+  const { currentItem } = useItemState();
 
   return (
     props.opened && 
@@ -20,7 +20,7 @@ const ModalInfo = (props) => {
             padding = "20px"
             borderBottom = "1px solid black"
            >
-            <Text text = {key + ':'}/>  <Text color="black" text = {currentItem[key]}/>
+            <Text color="purple" text = {key + ':'}/>  <Text color="black" text = {currentItem[key]}/>
           </Rectangle>
         ))
                     
