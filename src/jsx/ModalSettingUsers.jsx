@@ -8,11 +8,13 @@ import ModalCreateUser from './ModalCreateUser';
 import ModalDelete from './ModalDelete';
 import ModalEdit from './ModalEdit';
 import { Button, Rectangle, Text } from './QuickBase';
+import { useTranslation } from 'react-i18next'
 
 
 const ModalSettingUsers = (props) => {
   const { currentUser } = useItemState();
   const [showPopupCreateUser, setShowPopupCreateUser] = useState(false);
+  const {t,i18n} = useTranslation();
 
   const handleCreate = () => {
     setShowPopupCreateUser(true)
@@ -51,7 +53,7 @@ const ModalSettingUsers = (props) => {
 
   return (
     props.opened &&
-      <Modal title="SETTING" close={props.close}>
+      <Modal title={t("modalSetting.title")} close={props.close}>
                 <Rectangle
                   display = "flex"
                   justifyContent = "center"
@@ -70,7 +72,7 @@ const ModalSettingUsers = (props) => {
                           height = "30px" 
                           borderRadius = "20px"
                           onClick={handleCreate} 
-                          text={"Create New User"}
+                          text={t("modalSetting.createBtn2")}
                         />
                     {usersData.map((item) => 
                     (
@@ -100,7 +102,7 @@ const ModalSettingUsers = (props) => {
                           height = "30px" 
                           borderRadius = "20px"
                           onClick={() => handleEdit(item)} 
-                          text={"Edit"}
+                          text={t("modalSetting.editBtn")} 
                         />
                         <Button
                           cursor = "pointer"
@@ -112,7 +114,7 @@ const ModalSettingUsers = (props) => {
                           height = "30px" 
                           borderRadius = "20px"
                           onClick={() => handleDelete(item)}
-                          text={"Delete"}
+                          text={t("modalSetting.deleteBtn")} 
                         />
                         </Rectangle>
                       </Rectangle>

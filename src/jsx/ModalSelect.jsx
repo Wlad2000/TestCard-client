@@ -3,11 +3,13 @@ import "../scss/modal.css";
 import { useItemState } from './context';
 import Modal from './Modal';
 import { Rectangle, Text, RadioButton } from './QuickBase';
+import { useTranslation } from 'react-i18next'
 
 
 
 const ModalSelect = (props) => {
   const { currentItem, setCurrentItem } = useItemState();
+  const {t,i18n} = useTranslation() 
 
   const handleCurrent = (user) =>{
     setCurrentItem(user);
@@ -16,7 +18,7 @@ const ModalSelect = (props) => {
 
   return (
     props.opened &&
-    <Modal title='SELECT' close={props.close}>
+    <Modal title={t("modalSelect.title")} close={props.close}>
             <Rectangle
                   display = "flex"
                   justifyContent = "center"

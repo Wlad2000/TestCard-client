@@ -1,0 +1,54 @@
+{
+    "login":{
+        "title":"Вхід",
+        "login":"Введіть логін..",
+        "message":"Авторизація",
+        "loginBtn":"Ввійти",
+        "password":"Введіть пароль.."
+    },
+    "card":{
+        "searchBtn":"Обрати",
+        "infoBtn":"Інформація",
+        "settingBtn":"Налаштування",
+        "settingBtn2":"Налаштування користувачів",
+        "exitBtn":"Вихід",
+        "title": "CARD NAME",
+        "message":"Оберіть item"
+    },
+    "modalInfo":{
+        "title":"ІНФОРМАЦІЯ",
+        "message":"Оберіть item"
+    },
+    "modalSelect":{
+        "title":"ОБРАТИ",
+        "message":"Оберіть item"
+    },
+    "modalSetting":{
+        "title":"НАЛАШТУВАННЯ",
+        "message":"",
+        "createBtn":"Додати новий item",
+        "createBtn2":"Додати нового користувача",
+        "deleteBtn":"Видалити",
+        "editBtn":"Редагувати"
+    },
+    "modalEdit":{
+        "title":"РЕДАГУВАТИ ITEM",
+        "editBtn":"Редагувати"
+    },
+    "modalCreate":{
+        "title":"ДОДАТИ НОВИЙ ITEM",
+        "title2":"ДОДАТИ НОВОГО КОРИСТУВАЧА",
+        "createBtn":"Додати новий item",
+        "createBtn2":"Додати нового користувача"
+    },
+    "modalError":{
+        "title":"НЕМАЄ ДОСТУПУ",
+        "btn":"OK",
+        "message":"Ви на маєте доступу до цієї операції!"
+    },
+    "modalDelete":{
+        "title":"ВИДАЛИТИ",
+        "deleteBtn":"Видалити",
+        "message":"Видалити item : "
+    }
+}

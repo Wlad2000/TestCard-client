@@ -2,14 +2,16 @@ import React from 'react'
 import { useItemState } from './context';
 import Modal from './Modal';
 import { Rectangle, Text } from './QuickBase';
+import { useTranslation } from 'react-i18next'
 
 const ModalInfo = (props) => {
   const { currentItem } = useItemState();
+  const {t,i18n} = useTranslation() 
 
   return (
     props.opened && 
-      <Modal title="INFO" close={props.close}>
-        {!currentItem ? 'Select item' :
+      <Modal title={t("modalInfo.title")} close={props.close}>
+        {!currentItem ? `${t("modalInfo.message")}` :
                   
                       
         Object.keys(currentItem).map((key) => (

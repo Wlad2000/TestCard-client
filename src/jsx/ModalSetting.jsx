@@ -8,10 +8,12 @@ import ModalDelete from './ModalDelete';
 import ModalEdit from './ModalEdit';
 import ModalError from './ModalError';
 import { Button, Rectangle, Text } from './QuickBase';
+import { useTranslation } from 'react-i18next'
 
 
 const ModalSetting = (props) => {
   const { currentItem, currentUser } = useItemState();
+  const {t,i18n} = useTranslation() 
 
   const [showPopupCreate, setShowPopupCreate] = useState(false);
   const [showPopupDelete, setShowPopupDelete] = useState(false);
@@ -40,7 +42,7 @@ const ModalSetting = (props) => {
 
   return (
     props.opened &&
-      <Modal title="SETTING" close={props.close}>
+      <Modal title={t("modalSetting.title")} close={props.close}>
                 <Rectangle
                   display = "flex"
                   justifyContent = "center"
@@ -59,7 +61,7 @@ const ModalSetting = (props) => {
                           height = "30px" 
                           borderRadius = "20px"
                           onClick={() => {currentUser.accessLevel === 0 ? handleError() : handleCreate()}} 
-                          text={"Create New Item"}
+                          text={t("modalSetting.createBtn")}
                         />
                     {props.data.map((item) => 
                     (
@@ -89,7 +91,7 @@ const ModalSetting = (props) => {
                           height = "30px" 
                           borderRadius = "20px"
                           onClick={() =>{ currentUser.accessLevel === 0 ? handleError() : handleEdit(item)}} 
-                          text={"Edit"}
+                          text={t("modalSetting.editBtn")}
                         />
                         <Button
                           cursor = "pointer"
@@ -101,7 +103,7 @@ const ModalSetting = (props) => {
                           height = "30px" 
                           borderRadius = "20px"
                           onClick={() => { currentUser.accessLevel !== 2 ? handleError() :handleDelete(item)}}
-                          text={"Delete"}
+                          text={t("modalSetting.deleteBtn")}
                         />
                         </Rectangle>
                       </Rectangle>

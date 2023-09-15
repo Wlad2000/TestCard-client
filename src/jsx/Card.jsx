@@ -6,17 +6,23 @@ import ModalSetting from './ModalSetting';
 import { Button, Rectangle, Text } from './QuickBase';
 import '../scss/card.css'
 import ModalSettingUsers from './ModalSettingUsers';
+import { useTranslation } from 'react-i18next'
 
 
 function Card({ data }) {
   const [showPopupSelect, setShowPopupSelect] = useState(false);
   const [showPopupInfo, setShowPopupInfo] = useState(false);
   const [showPopupSetting, setShowPopupSetting] = useState(false);
-
   const [showPopupSettingUsers, setShowPopupSettingUsers] = useState(false);
 
-
   const { currentItem,currentUser,setCurrentUser } = useItemState();
+
+  const [lang, setLang] = useState('en')
+  const {t,i18n} = useTranslation()
+
+  const changesLanguage = (lang) => {
+      i18n.changeLanguage(lang)
+  }
 
 
   const handleSettingUsers = () => {
@@ -55,15 +61,56 @@ function Card({ data }) {
       alignItems = "center"
     >
       <Rectangle
+        paddingBottom = "10px"
         margin = "10px"
         width = "100%"
         borderBottom = "purple 1px solid"
         display = "flex"
         justifyContent= "space-between"
+        alignItems = "center"
       >
         <Text 
-          text={"CARD NAME "+ currentUser.name } 
+        flex = "1"
+          text={`${t("card.title")} `+ currentUser.name } 
         />
+        <Rectangle
+           border= " 1px solid purple"
+           border-radius= "10px"
+           background-color = " grey"
+           alignItems = "center"
+           display = "flex"
+           flexDirection = "column"
+           justifyContent = "center"
+           rowGap = "3px"
+           width ="40px"
+           marginRight = "4%"
+           
+        >
+            <Button 
+              cursor = "pointer"
+              color = {lang === 'en' ? "gray" : "white"}
+              width = "35px"
+              height = "20px"
+              border = "none"
+              background-color = { lang === 'en' ? "lightgray"  : "gray"}
+              border-radius = "10px"
+              type="button"
+              onClick={()=> {changesLanguage('en'); setLang('en')}}
+              text="EN"
+            />
+            <Button 
+              cursor = "pointer"
+              color = {lang !== 'en' ? "gray" : "white"}
+              width = "35px"
+              height = "20px"
+              border = "none"
+              background-color = { lang !== 'en' ? "lightgray"  : "gray"}
+              border-radius = "10px"
+              type="button"  
+              onClick={()=> {changesLanguage('ua'); setLang('ua')}}
+              text="UA"
+            />
+        </Rectangle>
               <Button
                     cursor = "pointer"
                     backgroundColor = "coral"
@@ -74,7 +121,7 @@ function Card({ data }) {
                     height = "30px" 
                     borderRadius = "20px"
                     onClick={() => handleExit()} 
-                    text={"Exit"}
+                    text={t("card.exitBtn")}
                 />
       </Rectangle>
       <Rectangle 
@@ -83,7 +130,7 @@ function Card({ data }) {
         <Text 
           color = "#171717"
           fontSize = "20px"
-          text = { currentItem.name || `select item` }
+          text = { currentItem.name || `${t("card.message")}` }
         />
       </Rectangle>
       <Rectangle 
@@ -103,7 +150,7 @@ function Card({ data }) {
           textDecoration = "none"
           margin = "0.5rem 0.5rem"
           cursor = "pointer"
-          text = "Select"
+          text = {t("card.searchBtn")}
           onClick={handleSelect} 
           className = "card-btn"
         />
@@ -118,7 +165,7 @@ function Card({ data }) {
           textDecoration = "none"
           margin = "0.5rem 0.5rem"
           cursor = "pointer"
-          text = {"Info"}
+          text = {t("card.infoBtn")}
           onClick={handleInfo}
         />
         <Button 
@@ -132,7 +179,7 @@ function Card({ data }) {
           textDecoration = "none"
           margin = "0.5rem 0.5rem"
           cursor = "pointer"
-          text = {"Settings"}
+          text = {t("card.settingBtn")}
           onClick={handleSettings}
         />
       </Rectangle>
@@ -155,7 +202,7 @@ function Card({ data }) {
               textDecoration = "none"
               margin = "0.5rem 0.5rem"
               cursor = "pointer"
-              text = {"SettingUsers"}
+              text = {t("card.settingBtn2")}
               onClick={handleSettingUsers}
         />
           </Rectangle>

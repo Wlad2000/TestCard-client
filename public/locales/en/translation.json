@@ -1,0 +1,54 @@
+{
+    "login":{
+        "title":"Login",
+        "login":"Enter login..",
+        "message":"Authorization",
+        "loginBtn":"Enter",
+        "password":"Enter password.."
+    },
+    "card":{
+        "searchBtn":"Select",
+        "infoBtn":"Info",
+        "settingBtn":"Setting",
+        "settingBtn2":"Setting Users",
+        "exitBtn":"Exit",
+        "title": "CARD NAME",
+        "message":"Select item"
+    },
+    "modalInfo":{
+        "title":"INFO",
+        "message":"Select item"
+    },
+    "modalSelect":{
+        "title":"SELECT",
+        "message":"Select item"
+    },
+    "modalSetting":{
+        "title":"SETTING",
+        "message":"",
+        "createBtn":"Create new item",
+        "createBtn2":"Create new user",
+        "deleteBtn":"Delete",
+        "editBtn":"Edit"
+    },
+    "modalEdit":{
+        "title":"EDIT ITEM",
+        "editBtn":"Edit"
+    },
+    "modalCreate":{
+        "title":"CREATE NEW ITEM",
+        "title2":"CREATE NEW USER",
+        "createBtn":"Create new item",
+        "createBtn2":"Create new user"
+    },
+    "modalError":{
+        "title":"NOT ACCESS",
+        "btn":"OK",
+        "message":"You do not have access to this operation!"
+    },
+    "modalDelete":{
+        "title":"DELETE ITEM",
+        "deleteBtn":"Delete",
+        "message":"Delete item : "
+    }
+}

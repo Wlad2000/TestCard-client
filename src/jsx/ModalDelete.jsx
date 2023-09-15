@@ -1,13 +1,13 @@
 import React from 'react'
 import { socket } from './App';
-
+import { useTranslation } from 'react-i18next'
 import Modal from './Modal';
 import { Button, Rectangle, Text } from './QuickBase';
 
 
 
 const ModalDelete = (props) => {
-
+  const {t,i18n} = useTranslation() 
   const handleDelete = () => {
     socket.emit('delete-listname', props.item.idrecipe);
 
@@ -26,7 +26,7 @@ const ModalDelete = (props) => {
 
   return (
     props.opened &&
-      <Modal title='Delete item' close={props.close} width="30vw" height="200px">
+      <Modal title={t("modalDelete.title")} close={props.close} width="30vw" height="200px">
           <Rectangle 
             display = "flex"
             justifyContent = "center"
@@ -38,7 +38,7 @@ const ModalDelete = (props) => {
               <Text 
                 marginTop = "20px"
                 color = "black"
-                text={"Delete item => " + props.item.name}
+                text={`${t("modalDelete.message")}` + props.item.name}
               />
               <Button 
                 cursor = "pointer"
@@ -51,7 +51,7 @@ const ModalDelete = (props) => {
                 height = "30px" 
                 borderRadius = "20px"
                 onClick = {props.delUser ? handleDeleteUser : handleDelete}
-                text={"Delete"}
+                text={t("modalDelete.deleteBtn")}
               />
           </Rectangle>
       </Modal>

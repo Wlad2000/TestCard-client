@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { socket } from './App';
 import { useItemState } from './context';
-
+import { useTranslation } from 'react-i18next'
 
 import Modal from './Modal'
 import { Button, Input, Rectangle, Text } from './QuickBase';
@@ -9,6 +9,7 @@ import { Button, Input, Rectangle, Text } from './QuickBase';
 const Login = () => {
     const [loginData, setLoginData] = useState({ login: '', password: '' });
     const {currentUser, setCurrentUser , isAuth, setIsAuth} = useItemState();
+    const {t,i18n} = useTranslation() 
 
 
 
@@ -30,13 +31,8 @@ const Login = () => {
 
 
   return (
-    <Modal title="Login">
-      {currentUser ? (
-        <div>
-          <h1>Ви увійшли як {currentUser.login}</h1>
-         
-        </div>
-      ) : (
+    <Modal title={t("login.title")} >
+
         <Rectangle
             display = "flex"
             alignItems = "center"
@@ -50,7 +46,7 @@ const Login = () => {
           <Text 
             color = "#2b0231"
             fontSize = "25px"
-            text="Authorization"
+            text={t("login.message")}
         />
 
 
@@ -62,7 +58,7 @@ const Login = () => {
                 color = "purple"
                 borderBottom = "3px solid purple"
               type="text"
-              placeholder="Login.."
+              placeholder={t("login.login")}
               value={loginData.login}
               onChange={(e) =>
                 setLoginData({ ...loginData, login: e.target.value })
@@ -76,7 +72,7 @@ const Login = () => {
                 background = "none"
                 borderBottom = "3px solid purple"
               type="password"
-              placeholder="Password.."
+              placeholder= {t("login.password")}
               value={loginData.password}
               onChange={(e) =>
                 setLoginData({ ...loginData, password: e.target.value })
@@ -93,12 +89,11 @@ const Login = () => {
               height = "30px" 
               borderRadius = "20px"
               onClick={handleLogin} 
-              text={"Login"}
+              text={t("login.loginBtn")}
             />  
             
             <Text color="purple" text={errorMessage}/>
         </Rectangle>
-      )}
     </Modal>
   )
 }

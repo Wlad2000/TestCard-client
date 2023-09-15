@@ -1,11 +1,13 @@
 import React from 'react'
 import Modal from './Modal'
 import { Button, Rectangle, Text } from './QuickBase'
+import { useTranslation } from 'react-i18next'
 
 const ModalError = (props) => {
+    const {t,i18n} = useTranslation() 
   return (
     props.opened &&
-    <Modal  title='Not access' close={props.close} width="30vw" height="200px">
+    <Modal  title={t("modalError.title")} close={props.close} width="30vw" height="200px">
         <Rectangle
             display="flex"
             justifyContent = "center"
@@ -19,7 +21,7 @@ const ModalError = (props) => {
                 alignItems = "center"
                 fontSize = "18px"
                 fontWeight = "bold"
-                text="You do not have access to this operation!"
+                text={t("modalError.message")}
             />
              <Button
               cursor = "pointer"
@@ -31,7 +33,7 @@ const ModalError = (props) => {
               height = "40px" 
               borderRadius = "20px"
               onClick={props.close} 
-              text={"OK"}
+              text={t("modalError.btn")}
             />  
 
         </Rectangle>

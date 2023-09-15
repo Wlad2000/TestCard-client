@@ -3,11 +3,12 @@ import { socket } from './App';
 import { useItemState } from './context';
 import Modal from './Modal';
 import { Button, Rectangle,  Input, Text } from './QuickBase';
+import { useTranslation } from 'react-i18next'
 
 
 
 const ModalCreateUser = (props) => {
-
+  const {t,i18n} = useTranslation() 
   const [errorMessage, setErrorMessage] = useState('');
 
   const [registerData, setRegisterData] = useState({
@@ -39,7 +40,7 @@ const ModalCreateUser = (props) => {
 
   return (
     props.opened &&
-      <Modal title='Create user' close={props.close}>
+      <Modal title={t("modalCreate.title2")} close={props.close}>
           <Rectangle
             display="flex"
             justifyContent = "center"
@@ -48,7 +49,6 @@ const ModalCreateUser = (props) => {
             rowGap = "20px"
             padding = "20px"
           >
-             <Text text="Registration new user"/>
              <Text color="purple" text={errorMessage}/>
              <Input
                 fontSize = "15px"
@@ -147,7 +147,7 @@ const ModalCreateUser = (props) => {
               height = "30px" 
               borderRadius = "20px"
               onClick={handleRegister} 
-              text={"Create New User"}
+              text={t("modalCreate.createBtn2")}
             />  
           
 

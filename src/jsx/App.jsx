@@ -6,6 +6,7 @@ import Card from './Card';
 import { useItemState, UserStateProvider } from './context';
 import Login from './Login';
 import { Rectangle } from './QuickBase';
+import '../i18n'
 
 export const socket = io.connect('http://localhost:3001'); // SERVER
 

@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { socket } from './App';
 import Modal from './Modal';
 import { Button, Rectangle, Text, Input } from './QuickBase';
+import { useTranslation } from 'react-i18next'
 
 
 
 const ModalEdit = (props) => {
+  const {t,i18n} = useTranslation() 
 
   const [formData, setFormData] = useState({
     id: 0,
@@ -48,7 +50,7 @@ const ModalEdit = (props) => {
 
   return (
     props.opened &&
-      <Modal title='Edit item' close={props.close}>
+      <Modal title={t("modalEdit.title")} close={props.close}>
         
             {
               props.editUser 
@@ -113,7 +115,7 @@ const ModalEdit = (props) => {
               height = "30px" 
               borderRadius = "20px"
               onClick={() => handleSubmitCreateUser(props.item.id)} 
-              text={"Edit"}
+              text={t("modalEdit.editBtn")}
             />  
 
             </Rectangle>
@@ -269,7 +271,7 @@ const ModalEdit = (props) => {
               height = "30px" 
               borderRadius = "20px"
               onClick={() => handleSubmit(props.item.idrecipe)} 
-              text={"Edit"}
+              text={t("modalEdit.editBtn")}
             />    
           </Rectangle>
           }        
