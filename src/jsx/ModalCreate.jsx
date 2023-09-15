@@ -65,66 +65,134 @@ const ModalCreate = (props) => {
             padding = "20px"
           >
             <Input 
+            fontSize = "15px"
+            width = "40%"
+            border = "none"
+            background = "none"
+            borderBottom = "3px solid purple"
+           type="text"  
               name = "name"
               value={formData.name}
               onChange={handleChange}
               placeholder="name" 
             />
             <Input 
+            fontSize = "15px"
+            width = "40%"
+            border = "none"
+            background = "none"
+            borderBottom = "3px solid purple"
+           type="number"  
               name = "tempgrain"
               placeholder="tempgrain"
               value={formData.tempgrain}
               onChange={handleChange}
             />
             <Input 
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+             borderBottom = "3px solid purple"
+            type="number"
               name = "tempgrainmax"
               value={formData.tempgrainmax}
               onChange={handleChange}
               placeholder="tempgrainmax"
             />
             <Input
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+             borderBottom = "3px solid purple"
+            type="number"
               name = "tempgraincritical"
               value={formData.tempgraincritical}
               onChange={handleChange}
               placeholder="tempgraincritical"
             />
             <Input
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+             borderBottom = "3px solid purple"
+            type="number"
               name = "tempagent"
               value={formData.tempagent}
               onChange={handleChange}
               placeholder="tempagent"
             />
             <Input
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+             borderBottom = "3px solid purple"
+            type="number"
               name = "tempagentcritical"
               value={formData.tempagentcritical}
               onChange={handleChange}
               placeholder="tempagentcritical"
             />
             <Input
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+             borderBottom = "3px solid purple"
+            type="number"
               name = "maxfanasprate"
               value={formData.maxfanasprate}
               onChange={handleChange}
               placeholder="maxfanasprate"
             />
             <Input
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+             borderBottom = "3px solid purple"
+            type="number"
               name ="maxfanrecrate"
               value={formData.maxfanrecrate}
               onChange={handleChange} 
               placeholder="maxfanrecrate"
             />
             <Input
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+             borderBottom = "3px solid purple"
+            type="number"
               name = "timeunload"
               value={formData.timeunload}
               onChange={handleChange} 
               placeholder="timeunload"
             />
             <Input
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+            
+             borderBottom = "3px solid purple"
+            type="number"
               name = "timeunloaddelay"
               value={formData.timeunloaddelay}
               onChange={handleChange} 
               placeholder="timeunloaddelay"
             />
             <Input
+             fontSize = "15px"
+             width = "40%"
+             border = "none"
+             background = "none"
+             color = "black"
+             borderBottom = "3px solid purple"
+            type="number"
               name = "weight"
               value={formData.weight}
               onChange={handleChange}  

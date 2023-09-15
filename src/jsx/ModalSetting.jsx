@@ -6,15 +6,18 @@ import Modal from './Modal';
 import ModalCreate from './ModalCreate';
 import ModalDelete from './ModalDelete';
 import ModalEdit from './ModalEdit';
+import ModalError from './ModalError';
 import { Button, Rectangle, Text } from './QuickBase';
 
 
 const ModalSetting = (props) => {
-  const { currentItem, setCurrentItem } = useItemState();
+  const { currentItem, currentUser } = useItemState();
 
   const [showPopupCreate, setShowPopupCreate] = useState(false);
   const [showPopupDelete, setShowPopupDelete] = useState(false);
   const [showPopupEdit, setShowPopupEdit] = useState(false);
+  const [showPopupError, setShowPopupError] = useState(false);
+
   const [deleteItem, setDeleteItem] = useState();
   const [editItem, setEditItem] = useState();
 
@@ -29,7 +32,9 @@ const ModalSetting = (props) => {
   const handleEdit = (item) => {
     setShowPopupEdit(true)
     setEditItem(item)
- 
+  };
+  const handleError = () => {
+    setShowPopupError(true)
   };
 
 
@@ -53,7 +58,7 @@ const ModalSetting = (props) => {
                           marginBottom = "5px"
                           height = "30px" 
                           borderRadius = "20px"
-                          onClick={handleCreate} 
+                          onClick={() => {currentUser.accessLevel === 0 ? handleError() : handleCreate()}} 
                           text={"Create New Item"}
                         />
                     {props.data.map((item) => 
@@ -68,12 +73,12 @@ const ModalSetting = (props) => {
                       >
                      
                         <Text
-                          
                           color = {currentItem.idrecipe === item.idrecipe ? "green" : " black" }
                           text = {item.name}
                         />
 
                         <Rectangle>
+                     
                         <Button
                           cursor = "pointer"
                           backgroundColor = "orange"
@@ -83,7 +88,7 @@ const ModalSetting = (props) => {
                           marginBottom = "5px"
                           height = "30px" 
                           borderRadius = "20px"
-                          onClick={() => handleEdit(item)} 
+                          onClick={() =>{ currentUser.accessLevel === 0 ? handleError() : handleEdit(item)}} 
                           text={"Edit"}
                         />
                         <Button
@@ -95,12 +100,13 @@ const ModalSetting = (props) => {
                           marginBottom = "5px"
                           height = "30px" 
                           borderRadius = "20px"
-                          onClick={() => handleDelete(item)}
+                          onClick={() => { currentUser.accessLevel !== 2 ? handleError() :handleDelete(item)}}
                           text={"Delete"}
                         />
                         </Rectangle>
                       </Rectangle>
                     ))}
+                    <ModalError opened={showPopupError} close={() => setShowPopupError(false)} />
                     <ModalCreate opened={showPopupCreate} close={() => setShowPopupCreate(false)} />
                     <ModalEdit item={editItem} opened={showPopupEdit} close={() => setShowPopupEdit(false)} />
                     <ModalDelete item={deleteItem} opened={showPopupDelete} close={() => setShowPopupDelete(false)} />

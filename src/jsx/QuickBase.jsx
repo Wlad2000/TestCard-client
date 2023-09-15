@@ -7,6 +7,7 @@
 
 import React from "react";
 
+
 function Item(props) {
     var styles = Object.assign({}, props);
 
@@ -50,7 +51,7 @@ function RadioButton(props) {
 }
 
 function Input(props) {
-    var styles = Object.assign({}, props);
+    var styles = Object.assign({color : "black"}, props);
     return (
                
             <input

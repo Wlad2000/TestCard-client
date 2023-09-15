@@ -21,8 +21,8 @@ const Modal = (props) => {
             padding = "20px"
             borderRadius = "12px"
             backgroundColor = "white"
-            width = "40vw"
-            height = "250px"
+            width = {props.width || "50vw"}
+            height ={props.height || "30vw"}
             overflow = "auto"
             onClick = {(e) => e.stopPropagation()}
             backdropFilter="blur(10px)"

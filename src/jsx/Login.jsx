@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { socket } from './App';
 import { useItemState } from './context';
 
+
 import Modal from './Modal'
 import { Button, Input, Rectangle, Text } from './QuickBase';
 
@@ -52,6 +53,7 @@ const Login = () => {
             text="Authorization"
         />
 
+
             <Input
                 fontSize = "15px"
                 width = "40%"
@@ -81,6 +83,7 @@ const Login = () => {
               }
             />
             <Button
+            className='card-btn'
               cursor = "pointer"
               backgroundColor = "purple"
               color = "#fff"

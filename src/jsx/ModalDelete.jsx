@@ -26,7 +26,7 @@ const ModalDelete = (props) => {
 
   return (
     props.opened &&
-      <Modal title='Create item' close={props.close}>
+      <Modal title='Delete item' close={props.close} width="30vw" height="200px">
           <Rectangle 
             display = "flex"
             justifyContent = "center"
