@@ -4,9 +4,9 @@ import { Button, Rectangle, Text } from './QuickBase'
 import { useTranslation } from 'react-i18next'
 
 const NavBar = () => {
-    const { currentUser,setCurrentUser } = useItemState();
+    const { currentUser,setCurrentUser, lang, setLang } = useItemState();
 
-    const [lang, setLang] = useState('en')
+
     const {t,i18n} = useTranslation()
   
     const changesLanguage = (lang) => {
@@ -41,8 +41,8 @@ const NavBar = () => {
         />
         <Rectangle
            border= " 1px solid purple"
-           border-radius= "10px"
-           background-color = " grey"
+           borderRadius= "10px"
+           backgroundColor = " grey"
            alignItems = "center"
            display = "flex"
            flexDirection = "column"
@@ -58,8 +58,8 @@ const NavBar = () => {
               width = "35px"
               height = "20px"
               border = "none"
-              background-color = { lang === 'en' ? "lightgray"  : "gray"}
-              border-radius = "10px"
+              backgroundColor = { lang === 'en' ? "lightgray"  : "gray"}
+              borderRadius = "10px"
               type="button"
               onClick={()=> {changesLanguage('en'); setLang('en')}}
               text="EN"
@@ -70,8 +70,8 @@ const NavBar = () => {
               width = "35px"
               height = "20px"
               border = "none"
-              background-color = { lang !== 'en' ? "lightgray"  : "gray"}
-              border-radius = "10px"
+              backgroundColor = { lang !== 'en' ? "lightgray"  : "gray"}
+              borderRadius = "10px"
               type="button"  
               onClick={()=> {changesLanguage('ua'); setLang('ua')}}
               text="UA"

@@ -1,10 +1,13 @@
 import React from 'react'
 import CardChart from './CardChart'
+import CardDonutChart from './CardDonutChart'
 import CardItem from './CardItem'
 import CardUser from './CardUser'
 import { Rectangle } from './QuickBase'
 
 const Home = (props) => {
+
+
   return (
     <Rectangle 
         display = "flex"
@@ -24,6 +27,7 @@ const Home = (props) => {
         <CardUser />
         <CardItem data={props.data} />
         <CardChart data={props.data} />
+        <CardDonutChart />
 
     </Rectangle>
     </Rectangle>
