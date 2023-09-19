@@ -13,10 +13,9 @@ import { useTranslation } from 'react-i18next'
 
 export const socket = io.connect('http://localhost:3001'); // SERVER
 
-
 function App() {
   const [listnames, setListnames] = useState([]);
-  const {  isAuth,setCurrentUser, currentUser, setLang, lang } = useItemState();
+  const {  isAuth,setCurrentUser, currentUser, setLang, } = useItemState();
   const {t,i18n} = useTranslation()
 
   const changesLanguage = (lang) => {
@@ -27,7 +26,7 @@ function App() {
     socket.emit('get_listnames');
    
     socket.on('country', (data) => {
-      const country = data.country  === 'UK' ? 'ua' : 'en';
+      const country = data.country  === 'UA' ? 'ua' : 'en';
       setLang(`${country}`)
       changesLanguage(country)
       console.log(`Your country is: ${country}`);
@@ -52,7 +51,7 @@ function App() {
     localStorage.removeItem('user');
     setCurrentUser(null);
   }
-
+  console.log(currentUser)
     return () => {
       socket.disconnect();
     };
