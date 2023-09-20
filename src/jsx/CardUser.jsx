@@ -5,15 +5,20 @@ import { useTranslation } from 'react-i18next'
 import { useItemState } from './context'
 import ModalSettingUsers from './ModalSettingUsers'
 import { socket } from './App'
+import ModalExportUserPdf from './ModalExportUserPdf'
 
 const CardUser = (props) => {
     const { currentUser, imageData, reload, setReload, } = useItemState();
     const [showPopupSettingUsers, setShowPopupSettingUsers] = useState(false);
+    const [showPopupExportUsers, setShowPopupExportUsers] = useState(false);
 
     const {t,i18n} = useTranslation()
 
     const handleSettingUsers = () => {
         setShowPopupSettingUsers(true)
+      };
+      const handleExportUsers = () => {
+        setShowPopupExportUsers(true)
       };
 
       const [selectedFile, setSelectedFile] = useState(null);
@@ -47,20 +52,7 @@ const CardUser = (props) => {
     };
 
 
-    const handleGetUserPdf = () => {
-        
-        socket.emit('getUserDataPDF', userId);
-        socket.on('pdfGenerated', (pdfPath) => {
-        const blob = new Blob([pdfPath], { type: 'application/pdf' });
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', `user_${userId}.pdf`);
-        document.body.appendChild(link);
-        link.click();
-        URL.revokeObjectURL(url);
-      });
-    };
+
       
 
 
@@ -69,7 +61,6 @@ const CardUser = (props) => {
   return (
     <Card title="CARD USER">
         <Rectangle 
-         margin = "10px"
       > 
         <Text 
           color = "#171717"
@@ -114,17 +105,17 @@ const CardUser = (props) => {
 
         <Button 
             textAlign = "center"
-            width = "50%"
+            width = "90%"
             borderRadius = "5px"
             padding = "0.5rem 1rem"
             borderColor = "#70297e"
-            backgroundColor = "#80156a"
+            backgroundColor = "#9a2181"
             color = "white"
             textDecoration = "none"
             margin = "0.5rem 0.5rem"
             cursor = "pointer"
-            onClick={handleGetUserPdf} 
-            text = "Dowland info PDF"
+            onClick={handleExportUsers} 
+            text = "Export info PDF"
         />
             {currentUser.accessLevel === 2 && 
                <Button 
@@ -144,7 +135,8 @@ const CardUser = (props) => {
             }
           </Rectangle>
         
-          <ModalSettingUsers  opened={showPopupSettingUsers} close={() => setShowPopupSettingUsers(false)}/>
+            <ModalExportUserPdf opened={showPopupExportUsers} close={() => setShowPopupExportUsers(false)}/>
+            <ModalSettingUsers  opened={showPopupSettingUsers} close={() => setShowPopupSettingUsers(false)}/>
     </Card>
   )
 }
