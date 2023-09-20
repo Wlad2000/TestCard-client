@@ -46,6 +46,24 @@ const CardUser = (props) => {
       };
     };
 
+
+    const handleGetUserPdf = () => {
+        
+        socket.emit('getUserDataPDF', userId);
+        socket.on('pdfGenerated', (pdfPath) => {
+        const blob = new Blob([pdfPath], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `user_${userId}.pdf`);
+        document.body.appendChild(link);
+        link.click();
+        URL.revokeObjectURL(url);
+      });
+    };
+      
+
+
   
 
   return (
@@ -82,17 +100,33 @@ const CardUser = (props) => {
             margin = "0.5rem 0.5rem"
             cursor = "pointer"
             onClick={handleUpload} 
-            text = "Download"
+            text = "Download image"
         />
+            
     </Rectangle>
-      {currentUser.accessLevel === 2 && 
+
             <Rectangle 
             display = "flex"
             justifyContent = "space-between"
             alignItems = "center"
             width = "70%"
           >
-           
+
+        <Button 
+            textAlign = "center"
+            width = "50%"
+            borderRadius = "5px"
+            padding = "0.5rem 1rem"
+            borderColor = "#70297e"
+            backgroundColor = "#80156a"
+            color = "white"
+            textDecoration = "none"
+            margin = "0.5rem 0.5rem"
+            cursor = "pointer"
+            onClick={handleGetUserPdf} 
+            text = "Dowland info PDF"
+        />
+            {currentUser.accessLevel === 2 && 
                <Button 
               textAlign = "center"
               width = "90%"
@@ -107,8 +141,9 @@ const CardUser = (props) => {
               text = {t("card.settingBtn2")}
               onClick={handleSettingUsers}
         />
+            }
           </Rectangle>
-        }
+        
           <ModalSettingUsers  opened={showPopupSettingUsers} close={() => setShowPopupSettingUsers(false)}/>
     </Card>
   )
