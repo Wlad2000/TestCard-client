@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { socket } from './App'
 import CardChart from './CardChart'
+import CardChat from './CardChat'
 import CardDonutChart from './CardDonutChart'
 import CardItem from './CardItem'
 import CardUser from './CardUser'
@@ -45,6 +46,7 @@ const Home = (props) => {
     >
         <CardUser />
         <CardItem data={props.data} />
+        <CardChat />
         <CardChart data={props.data} />
         <CardDonutChart />
 
