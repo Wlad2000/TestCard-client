@@ -4,6 +4,8 @@ import { Rectangle } from './QuickBase'
 import { MessageList } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
 import { useItemState } from './context';
+import '../scss/card.css'
+import { ReactChat } from "reactchatt";
 
 
 
@@ -24,11 +26,13 @@ const CardChat = () => {
            //<img style={{ border:'1px solid black', display: 'block', height:"7%", width: '7%'}} src={imageData} alt="Зображення" />
         );
       }
+     
     
   return (
     <Card width='400px' title="Card Chat">
         <Rectangle>
         <MessageList
+       className = 'ml'
         lockable={true}
         toBottomHeight={"100%"}
         dataSource={[
@@ -36,6 +40,8 @@ const CardChat = () => {
             position: "left",
             type: "text",
             title: "Name1",
+            titleColor: "red",
+            className : 'msg',
             text:
               "This is a long message that should have a long element near it. This is a long message that should have a long element near it",
             date: new Date(),
@@ -51,6 +57,8 @@ const CardChat = () => {
         children={[child()]}
         isShowChild={true}
       />
+        </Rectangle>
+        <Rectangle>
         </Rectangle>
     </Card>
   )

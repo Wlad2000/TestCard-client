@@ -9,6 +9,7 @@ import { Rectangle } from './QuickBase';
 import Home from './Home';
 import NavBar from './NavBar';
 import { useTranslation } from 'react-i18next'
+import CardDonutChart from './CardDonutChart';
 
 
 export const socket = io.connect('http://localhost:3001'); // SERVER
@@ -17,6 +18,7 @@ function App() {
   const [listnames, setListnames] = useState([]);
   const {  isAuth,setCurrentUser, currentUser, setLang, } = useItemState();
   const {t,i18n} = useTranslation()
+
 
   const changesLanguage = (lang) => {
     i18n.changeLanguage(lang)
@@ -66,17 +68,22 @@ function App() {
     >
              <NavBar/>
 
-     {!currentUser?
-          <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path='*' element={<Navigate to='/login' />} />
-          </Routes>
-          :
-          <Routes>
-           <Route exact path="/" element={<Home data={listnames}  />} />
-           <Route path='*' element={<Navigate to='/' />} />
-          </Routes>
-        }
+   
+          
+  {!currentUser ? (
+      <Routes>
+      <Route path="/" element={<Login />} />
+      </Routes>
+      ) : (
+    <Routes>
+      <Route path="/" element={<Home data={listnames} />} />
+      <Route path="/test" element={<CardDonutChart />} />
+      <Route path="*" element={!currentUser ?<Navigate to="/login" /> :<Navigate to="/" /> } />
+      </Routes>
+  )}
+ 
+
+        
 
     </Rectangle>
     

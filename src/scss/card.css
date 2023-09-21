@@ -6,3 +6,22 @@
     
   }
   
+
+  .msg{
+    
+
+  }
+  .ml{
+    color: purple;
+  }
+  .rce-mbox{
+    background-color: aqua;
+  }
+
+  .rce-mbox-left-notch , .rce-mbox-right-notch{
+    fill: aqua;
+  }
+
+  .rce-mbox-text{
+    font-size: 20px;
+  }
