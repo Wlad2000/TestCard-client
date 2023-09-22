@@ -7,8 +7,10 @@ import Modal from './Modal';
 import ModalCreateUser from './ModalCreateUser';
 import ModalDelete from './ModalDelete';
 import ModalEdit from './ModalEdit';
-import { Button, Rectangle, Text } from './QuickBase';
 import { useTranslation } from 'react-i18next'
+import { ColumnLayout, RowLayout } from '../quick/QuickLayouts';
+import { Button } from '../quick/QuickControls';
+import { Rectangle, Text } from '../quick/QuickBase';
 
 
 const ModalSettingUsers = (props) => {
@@ -54,10 +56,8 @@ const ModalSettingUsers = (props) => {
   return (
     props.opened &&
       <Modal title={t("modalSetting.title")} close={props.close}>
-                <Rectangle
-                  display = "flex"
+                <ColumnLayout
                   justifyContent = "center"
-                  flexDirection = "column"
                   rowGap = "20px"
                   padding = "20px"
              
@@ -76,17 +76,15 @@ const ModalSettingUsers = (props) => {
                         />
                     {usersData.map((item) => 
                     (
-                      <Rectangle 
+                      <RowLayout 
                         key={item.id}
-                        display = "flex"
-                        justifyContent = "space-between"
                         padding = "10px"
                         borderBottom = {currentUser.id === item.id ? "3px solid green" : "1px solid black" }
                         
                       >
                      
                         <Text
-                          
+                          fontSize = "20px"
                           color = {currentUser.id === item.id ? "green" : " black" }
                           text = {item.name}
                         />
@@ -117,12 +115,12 @@ const ModalSettingUsers = (props) => {
                           text={t("modalSetting.deleteBtn")} 
                         />
                         </Rectangle>
-                      </Rectangle>
+                      </RowLayout>
                     ))}
                     <ModalCreateUser opened={showPopupCreateUser} close={() => setShowPopupCreateUser(false)} />
                     <ModalEdit editUser='true' item={editItem} opened={showPopupEdit} close={() => setShowPopupEdit(false)} />
                     <ModalDelete delUser='true' item={deleteItem} opened={showPopupDelete} close={() => setShowPopupDelete(false)} />
-                </Rectangle>
+                </ColumnLayout>
       </Modal>
   )
 }

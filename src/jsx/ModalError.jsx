@@ -1,18 +1,18 @@
 import React from 'react'
 import Modal from './Modal'
-import { Button, Rectangle, Text } from './QuickBase'
 import { useTranslation } from 'react-i18next'
+import { ColumnLayout } from '../quick/QuickLayouts'
+import { Text } from '../quick/QuickBase'
+import { Button } from '../quick/QuickControls'
 
 const ModalError = (props) => {
     const {t,i18n} = useTranslation() 
   return (
     props.opened &&
     <Modal  title={t("modalError.title")} close={props.close} width="30vw" height="200px">
-        <Rectangle
-            display="flex"
+        <ColumnLayout
             justifyContent = "center"
             alignItems = "center"
-            flexDirection = "column"
             rowGap = "20px"
             padding = "20px"
             paddingTop = "10%"
@@ -36,7 +36,7 @@ const ModalError = (props) => {
               text={t("modalError.btn")}
             />  
 
-        </Rectangle>
+        </ColumnLayout>
     
     </Modal>
   )

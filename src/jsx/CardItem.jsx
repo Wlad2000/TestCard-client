@@ -3,10 +3,12 @@ import { useItemState } from './context';
 import ModalInfo from './ModalInfo';
 import ModalSelect from './ModalSelect';
 import ModalSetting from './ModalSetting';
-import { Button, Rectangle, Text } from './QuickBase';
 import '../scss/card.css'
 import { useTranslation } from 'react-i18next'
 import Card from './Card';
+import { RowLayout } from '../quick/QuickLayouts';
+import { Text } from '../quick/QuickBase';
+import { Button } from '../quick/QuickControls';
 
 
 function CardItem({ data }) {
@@ -34,18 +36,15 @@ function CardItem({ data }) {
 
   return (
     <Card title="CARD ITEM">
-      <Rectangle 
-         margin = "10px"
-      > 
+
         <Text 
           color = "#171717"
           fontSize = "20px"
           text = { currentItem.name || `${t("card.message")}` }
         />
-      </Rectangle>
-      <Rectangle 
+
+      <RowLayout 
         width = "100%"
-        display = "flex"
         justifyContent = "space-evenly"
         flexWrap = "wrap"  
         alignItems = "center"
@@ -93,7 +92,7 @@ function CardItem({ data }) {
           text = {t("card.settingBtn")}
           onClick={handleSettings}
         />
-      </Rectangle>
+      </RowLayout>
 
       <ModalSelect data={data} opened={showPopupSelect} close={() => setShowPopupSelect(false)}/>
       <ModalInfo opened={showPopupInfo} close={() => setShowPopupInfo(false)}/>

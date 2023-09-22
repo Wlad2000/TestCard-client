@@ -2,7 +2,9 @@ import React from 'react'
 import { socket } from './App';
 import { useTranslation } from 'react-i18next'
 import Modal from './Modal';
-import { Button, Rectangle, Text } from './QuickBase';
+import { ColumnLayout } from '../quick/QuickLayouts';
+import { Text } from '../quick/QuickBase';
+import { Button } from '../quick/QuickControls';
 
 
 
@@ -27,15 +29,14 @@ const ModalDelete = (props) => {
   return (
     props.opened &&
       <Modal title={t("modalDelete.title")} close={props.close} width="30vw" height="200px">
-          <Rectangle 
-            display = "flex"
+          <ColumnLayout 
             justifyContent = "center"
             alignItems = "center"
-            flexDirection = "column"
             rowGap = "50px"
             padding = "20px"
           >
-              <Text 
+              <Text
+                fontSize = "20px" 
                 marginTop = "20px"
                 color = "black"
                 text={`${t("modalDelete.message")}` + props.item.name}
@@ -53,7 +54,7 @@ const ModalDelete = (props) => {
                 onClick = {props.delUser ? handleDeleteUser : handleDelete}
                 text={t("modalDelete.deleteBtn")}
               />
-          </Rectangle>
+          </ColumnLayout>
       </Modal>
   )
 }

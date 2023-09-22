@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import Card from './Card'
-import { Button, Rectangle, Text } from './QuickBase'
 import { useTranslation } from 'react-i18next'
 import { useItemState } from './context'
 import ModalSettingUsers from './ModalSettingUsers'
 import { socket } from './App'
 import ModalExportUserPdf from './ModalExportUserPdf'
+import { ColumnLayout, RowLayout } from '../quick/QuickLayouts'
+import { Image, Text } from '../quick/QuickBase'
+import { Button, Input } from '../quick/QuickControls'
 
 const CardUser = (props) => {
     const { currentUser, imageData, reload, setReload, } = useItemState();
@@ -60,25 +62,42 @@ const CardUser = (props) => {
 
   return (
     <Card title="CARD USER">
-        <Rectangle 
-      > 
-        <Text 
+        <ColumnLayout
+            alignItems = "center"
+            rowGap = "10px"
+        > 
+        <Text
           color = "#171717"
           fontSize = "20px"
           text = { currentUser.name || `${t("card.message")}` }
         />
-      </Rectangle>
 
-        {imageData && <img style={{width: '90px'}} src={imageData} alt="Зображення" />}
-        {uploadMessage && <p style={{ color: 'red' }}>{uploadMessage}</p>}
+        {imageData && 
+            <Image 
+                width = '90px'
+                src = {imageData}
+                alt="Зображення" 
+            />}
+        {uploadMessage && 
+            <Text 
+                fontSize = "12px"
+                color = "red" 
+                text = {uploadMessage}
+            />}
 
-        <Rectangle 
-            display = "flex" 
-            justifyContent = "space-between"
+      </ColumnLayout>
+
+       
+        <RowLayout 
             alignItems = "center"
-            
         >
-        <input style={{width : "50%"}} type="file" accept="image/*" onChange={handleFileChange} />
+        <Input 
+            width = "50%"
+            color = "purple" 
+            type="file" 
+            accept="image/*" 
+            onChange={handleFileChange} 
+        />
         <Button 
             textAlign = "center"
             width = "50%"
@@ -92,20 +111,16 @@ const CardUser = (props) => {
             cursor = "pointer"
             onClick={handleUpload} 
             text = "Download image"
-        />
-            
-    </Rectangle>
+        />        
+    </RowLayout>
 
-            <Rectangle 
-            display = "flex"
-            justifyContent = "space-between"
+    <RowLayout 
             alignItems = "center"
-            width = "70%"
-          >
+            flexWrap = "wrap"  
+    >
 
         <Button 
             textAlign = "center"
-            width = "90%"
             borderRadius = "5px"
             padding = "0.5rem 1rem"
             borderColor = "#70297e"
@@ -120,7 +135,6 @@ const CardUser = (props) => {
             {currentUser.accessLevel === 2 && 
                <Button 
               textAlign = "center"
-              width = "90%"
               borderRadius = "5px"
               padding = "0.5rem 1rem"
               borderColor = "#70297e"
@@ -133,7 +147,7 @@ const CardUser = (props) => {
               onClick={handleSettingUsers}
         />
             }
-          </Rectangle>
+        </RowLayout>
         
             <ModalExportUserPdf opened={showPopupExportUsers} close={() => setShowPopupExportUsers(false)}/>
             <ModalSettingUsers  opened={showPopupSettingUsers} close={() => setShowPopupSettingUsers(false)}/>

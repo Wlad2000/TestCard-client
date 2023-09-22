@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { socket } from './App';
 import Modal from './Modal';
-import { Button, Rectangle,  Input } from './QuickBase';
 import { useTranslation } from 'react-i18next'
+import { ColumnLayout } from '../quick/QuickLayouts';
+import { Button, Input } from '../quick/QuickControls';
 
 
 
@@ -57,11 +58,9 @@ const ModalCreate = (props) => {
   return (
     props.opened &&
       <Modal title={t("modalCreate.title")} close={props.close}>
-          <Rectangle
-            display="flex"
+          <ColumnLayout
             justifyContent = "center"
             alignItems = "center"
-            flexDirection = "column"
             rowGap = "20px"
             padding = "20px"
           >
@@ -212,7 +211,7 @@ const ModalCreate = (props) => {
               text={t("modalCreate.createBtn")}
             />            
 
-          </Rectangle>
+          </ColumnLayout>
       </Modal>
   )
 }

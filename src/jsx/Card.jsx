@@ -1,6 +1,7 @@
 import React from 'react'
-import { Rectangle, Text } from './QuickBase'
+
 import { useTranslation } from 'react-i18next'
+import { Rectangle, Text } from '../quick/QuickBase'
 
 const Card = (props) => {
     const {t,i18n} = useTranslation()
@@ -27,6 +28,8 @@ const Card = (props) => {
         alignItems = "center"
       >
         <Text 
+        fontSize = '15px'
+        color = 'purple'
         flex = "1"
           text={props.title || `${t("card.title")} ` } 
         />

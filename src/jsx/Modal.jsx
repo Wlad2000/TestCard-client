@@ -1,5 +1,7 @@
 import React from 'react'
-import { Button, Rectangle, Text } from './QuickBase'
+import { Rectangle, Text } from '../quick/QuickBase'
+import { Button } from '../quick/QuickControls'
+
 
 const Modal = (props) => {
   return (
@@ -35,7 +37,9 @@ const Modal = (props) => {
                borderBottom = " #ac3bac 5px solid"
               >
                 <Text
-                    text = {props.title} 
+                  fontSize = "15px"
+                  color = "purple"
+                  text = {props.title} 
                 />
                 <Button
                     cursor = "pointer"

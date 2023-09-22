@@ -1,23 +1,24 @@
 import React from 'react'
+import { Text } from '../quick/QuickBase';
+import { Button } from '../quick/QuickControls';
+import { ColumnLayout } from '../quick/QuickLayouts';
 import { useItemState } from './context';
 import Modal from './Modal'
-import { Button, Rectangle, Text } from './QuickBase'
+
 
 const ModalExportUserPdfPreview = (props) => {
     const { imageData, currentUser } = useItemState();
   return (
     props.opened &&
     <Modal width="400px"  title="Preview Export User Info" close={props.close}>
-        <Rectangle
+        <ColumnLayout
             alignItems = "center"
             padding = "20px"
             paddingTop ="10%"
-            display = "flex"
-            flexDirection = "column"
             rowGap = "20px"
             
         >
-            <Rectangle
+            <ColumnLayout
                 background = "white"
                 width="70%"
                 height= "400px"
@@ -32,7 +33,7 @@ const ModalExportUserPdfPreview = (props) => {
                  <Text color="#171717"  text={` Surname: ${currentUser.surname}`}/>
                  <Text color="#171717"  text={` Login: ${currentUser.login}`}/>
                  <Text color="#171717"  text={` Email: ${currentUser.email}`}/>
-            </Rectangle>
+            </ColumnLayout>
 
             <Button
             textAlign = "center"
@@ -48,7 +49,7 @@ const ModalExportUserPdfPreview = (props) => {
             onClick={props.close} 
             text = "OK"
             />           
-        </Rectangle>
+        </ColumnLayout>
     </Modal>
   )
 }

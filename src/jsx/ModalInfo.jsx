@@ -1,8 +1,9 @@
 import React from 'react'
 import { useItemState } from './context';
 import Modal from './Modal';
-import { Rectangle, Text } from './QuickBase';
 import { useTranslation } from 'react-i18next'
+import { RowLayout } from '../quick/QuickLayouts';
+import { Text } from '../quick/QuickBase';
 
 const ModalInfo = (props) => {
   const { currentItem } = useItemState();
@@ -15,15 +16,13 @@ const ModalInfo = (props) => {
                   
                       
         Object.keys(currentItem).map((key) => (
-          <Rectangle
+          <RowLayout
             key={key}
-            display = "flex"
-            justifyContent = "space-between"
             padding = "20px"
             borderBottom = "1px solid black"
            >
-            <Text color="purple" text = {key + ':'}/>  <Text color="black" text = {currentItem[key]}/>
-          </Rectangle>
+            <Text fontSize="15px" color="purple" text = {key + ':'}/>  <Text color="black" text = {currentItem[key]}/>
+          </RowLayout>
         ))
                     
                 

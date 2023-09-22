@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { socket } from './App';
 import Modal from './Modal';
-import { Button, Rectangle, Text, Input } from './QuickBase';
+
 import { useTranslation } from 'react-i18next'
+import { ColumnLayout } from '../quick/QuickLayouts';
+import { Text } from '../quick/QuickBase';
+import { Button, Input } from '../quick/QuickControls';
 
 
 
@@ -12,7 +15,7 @@ const ModalEdit = (props) => {
   const [formData, setFormData] = useState({
     id: 0,
     updates: {
-     
+      
     },
   });
 
@@ -55,15 +58,13 @@ const ModalEdit = (props) => {
             {
               props.editUser 
               ?
-            <Rectangle
-              display="flex"
+            <ColumnLayout
               justifyContent = "center"
               alignItems = "center"
-              flexDirection = "column"
               rowGap = "20px"
               padding = "20px"
             >
-              <Text text={"ID: " + props.item.id}/>
+              <Text color="black" fontSize = "20px" text={"ID: " + props.item.id}/>
               
               <Input
                fontSize = "15px"
@@ -105,7 +106,7 @@ const ModalEdit = (props) => {
               onChange={handleChange}
               placeholder={"accessLevel: " + props.item.accessLevel}
             />
-                      <Button
+            <Button
               cursor = "pointer"
               backgroundColor = "orange"
               color = "#fff"
@@ -118,17 +119,15 @@ const ModalEdit = (props) => {
               text={t("modalEdit.editBtn")}
             />  
 
-            </Rectangle>
+            </ColumnLayout>
               :
-          <Rectangle
-              display="flex"
+          <ColumnLayout
               justifyContent = "center"
               alignItems = "center"
-              flexDirection = "column"
               rowGap = "20px"
               padding = "20px"
             >
-            <Text text={"ID: " + props.item.idrecipe}/>
+            <Text color="black" fontSize = "20px"  text={"ID: " + props.item.idrecipe}/>
             <Input 
                fontSize = "15px"
                width = "40%"
@@ -273,7 +272,7 @@ const ModalEdit = (props) => {
               onClick={() => handleSubmit(props.item.idrecipe)} 
               text={t("modalEdit.editBtn")}
             />    
-          </Rectangle>
+          </ColumnLayout>
           }        
 
      

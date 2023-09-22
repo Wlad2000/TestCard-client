@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { Rectangle, Text } from '../quick/QuickBase';
+import { Button } from '../quick/QuickControls';
+import { ColumnLayout } from '../quick/QuickLayouts';
 import { socket } from './App';
 import { useItemState } from './context';
 import Modal from './Modal'
 import ModalExportUserPdfPreview from './ModalExportUserPdfPreview';
-import { Button, Rectangle, Text } from './QuickBase'
+
 
 const ModalExportUserPdf = (props) => {
     const [showPopupExportUsers, setShowPopupExportUsers] = useState(false);
@@ -32,21 +35,21 @@ const ModalExportUserPdf = (props) => {
 
   return (
     props.opened &&
-    <Modal title="Export User Info" close={props.close}>
-        <Rectangle
-            display = "flex"
+    <Modal width="30%" title="Export User Info" close={props.close}>
+        <ColumnLayout
             justifyContent = "center"
             alignItems = "center"
-            flexDirection = "column"
             rowGap = "20px"
             padding = "20px"
             paddingTop ="10%"
         >
             <Text
-             paddingBottom ="5%"
+                fontSize = "20px"
+                color= "purple"
+                paddingBottom ="5%"
                 text={`Export to PDF info about user: ${currentUser.name}`}
             />
-            <Rectangle>
+ 
                 <Button 
                     textAlign = "center"
                     width = "100%"
@@ -75,11 +78,10 @@ const ModalExportUserPdf = (props) => {
                     onClick={handleGetUserPdf} 
                     text = "Dowland info PDF"
                 />
-            </Rectangle>
 
 
 
-        </Rectangle>
+        </ColumnLayout>
         <ModalExportUserPdfPreview opened={showPopupExportUsers} close={() => setShowPopupExportUsers(false)}/>
     </Modal>
   )

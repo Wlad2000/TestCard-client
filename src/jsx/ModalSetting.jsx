@@ -7,8 +7,10 @@ import ModalCreate from './ModalCreate';
 import ModalDelete from './ModalDelete';
 import ModalEdit from './ModalEdit';
 import ModalError from './ModalError';
-import { Button, Rectangle, Text } from './QuickBase';
 import { useTranslation } from 'react-i18next'
+import { ColumnLayout, RowLayout } from '../quick/QuickLayouts';
+import { Button } from '../quick/QuickControls';
+import { Rectangle, Text } from '../quick/QuickBase';
 
 
 const ModalSetting = (props) => {
@@ -43,10 +45,8 @@ const ModalSetting = (props) => {
   return (
     props.opened &&
       <Modal title={t("modalSetting.title")} close={props.close}>
-                <Rectangle
-                  display = "flex"
+                <ColumnLayout
                   justifyContent = "center"
-                  flexDirection = "column"
                   rowGap = "20px"
                   padding = "20px"
              
@@ -65,7 +65,7 @@ const ModalSetting = (props) => {
                         />
                     {props.data.map((item) => 
                     (
-                      <Rectangle 
+                      <RowLayout 
                         key={item.idrecipe}
                         display = "flex"
                         justifyContent = "space-between"
@@ -75,6 +75,7 @@ const ModalSetting = (props) => {
                       >
                      
                         <Text
+                          fontSize = '15px'
                           color = {currentItem.idrecipe === item.idrecipe ? "green" : " black" }
                           text = {item.name}
                         />
@@ -106,13 +107,13 @@ const ModalSetting = (props) => {
                           text={t("modalSetting.deleteBtn")}
                         />
                         </Rectangle>
-                      </Rectangle>
+                      </RowLayout>
                     ))}
                     <ModalError opened={showPopupError} close={() => setShowPopupError(false)} />
                     <ModalCreate opened={showPopupCreate} close={() => setShowPopupCreate(false)} />
                     <ModalEdit item={editItem} opened={showPopupEdit} close={() => setShowPopupEdit(false)} />
                     <ModalDelete item={deleteItem} opened={showPopupDelete} close={() => setShowPopupDelete(false)} />
-                </Rectangle>
+                </ColumnLayout>
       </Modal>
   )
 }
